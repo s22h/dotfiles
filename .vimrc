@@ -11,7 +11,6 @@ set tabstop=8
 set ai
 set si
 
-let g:molokai_original=1
 color molokai
 
 syntax on
