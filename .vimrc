@@ -10,6 +10,7 @@ set noswapfile
 set tabstop=4
 set ai
 set si
+set colorcolumn=80
 
 set list
 set listchars=space:·,tab:→\ ,eol:\ ,nbsp:␣,trail:•,extends:»,precedes:«
