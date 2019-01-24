@@ -11,8 +11,8 @@ set tabstop=4
 set ai
 set si
 
-set·list
-set·listchars=space:·,tab:→\·,eol:\·,nbsp:␣,trail:•,extends:»,precedes:«
+set list
+set listchars=space:·,tab:→\ ,eol:\ ,nbsp:␣,trail:•,extends:»,precedes:«
 
 color molokai
 
