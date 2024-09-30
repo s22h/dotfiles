@@ -35,6 +35,10 @@ vim.g.mapleader = ' '
 
 vim.keymap.set('', '<C-c>', '<Esc>')
 vim.keymap.set('n', '<leader>fv', vim.cmd.Ex)
+vim.keymap.set('n', '<A-Up>', ':m -2<CR>')
+vim.keymap.set('i', '<A-Up>', ':m -2<CR>')
+vim.keymap.set('n', '<A-Down>', ':m +1<CR>')
+vim.keymap.set('i', '<A-Down>', ':m +1<CR>')
 
 require('plugins')
 
