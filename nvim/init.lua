@@ -32,13 +32,11 @@ vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
 
 vim.g.mapleader = ' '
+vim.g.localmapleader = '\\'
 
 vim.keymap.set('', '<C-c>', '<Esc>')
-vim.keymap.set('n', '<leader>fv', vim.cmd.Ex)
 vim.keymap.set('n', '<A-Up>', ':m -2<CR>')
-vim.keymap.set('i', '<A-Up>', ':m -2<CR>')
 vim.keymap.set('n', '<A-Down>', ':m +1<CR>')
-vim.keymap.set('i', '<A-Down>', ':m +1<CR>')
 
 require('plugins')
 
