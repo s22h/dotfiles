@@ -1,1 +1,4 @@
 /nvim/plugin/
+/zsh/.zcompdump*
+/zsh/.shell.pre-oh-my-zsh
+
