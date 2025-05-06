@@ -19,3 +19,6 @@ alias zed="zeditor"
 set --export BUN_INSTALL "$HOME/bin/bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
+# go
+set --export PATH $GOPATH/bin $PATH
+
