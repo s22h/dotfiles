@@ -20,6 +20,28 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 		{
+			"dracula/vim",
+			name = "dracula",
+			lazy = false,
+			priority = 1000,
+		},
+		{
+			"ellisonleao/gruvbox.nvim",
+			lazy = false,
+			priority = 1000,
+			config = function()
+				vim.cmd.colorscheme("gruvbox")
+			end
+		},
+		{
+			"sainnhe/everforest",
+			lazy = false,
+			priority = 1000,
+			config = function()
+				vim.g.everforest_enable_italic = true
+			end
+		},
+		{
 			"nvim-telescope/telescope.nvim",
 			branch = "0.1.x",
 			dependencies = {
@@ -27,24 +49,25 @@ require("lazy").setup({
 			}
 		},
 		{ "tpope/vim-fugitive" },
+		-- LSP Support
+		{ "neovim/nvim-lspconfig" },
+		{ "williamboman/mason.nvim" },
+		{ "williamboman/mason-lspconfig.nvim" },
+		-- Autocompletion
+		{ "hrsh7th/nvim-cmp" },
+		{ "hrsh7th/cmp-nvim-lsp" },
+		{ "hrsh7th/cmp-buffer" },
+		{ "hrsh7th/cmp-path" },
 		{
-			"VonHeikemen/lsp-zero.nvim",
-			branch = "v4.x",
-			dependencies = {
-				-- LSP Support
-				{ "neovim/nvim-lspconfig" },
-				{ "williamboman/mason.nvim" },
-				{ "williamboman/mason-lspconfig.nvim" },
-				-- Autocompletion
-				{ "hrsh7th/nvim-cmp" },
-				{ "hrsh7th/cmp-nvim-lsp" },
-				{ "hrsh7th/cmp-buffer" },
-				{ "hrsh7th/cmp-path" }
-			}
+			"dense-analysis/ale",
+			config = function()
+				vim.g.ale_linters = {
+					typescript = { "eslint", "tsserver" },
+					typescriptreact = { "eslint", "tsserver" }
+				}
+			end
 		},
-		{ "dense-analysis/ale" },
-		{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-		{ "sbdchd/neoformat" }
+		{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" }
 	}
 })
 

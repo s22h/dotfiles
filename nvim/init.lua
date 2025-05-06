@@ -26,10 +26,11 @@ vim.opt.listchars = 'multispace:·,tab:→ ,nbsp:␣,trail:•,extends:»,preced
 vim.opt.cursorline = true
 vim.opt.showmode = true
 vim.opt.showcmd = true
+vim.opt.spell = true
+vim.opt.spelllang = 'en_gb'
 
-vim.cmd.colorscheme('molokai')
-vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+--vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+--vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
 
 vim.g.mapleader = ' '
 vim.g.localmapleader = '\\'
@@ -37,6 +38,9 @@ vim.g.localmapleader = '\\'
 vim.keymap.set('', '<C-c>', '<Esc>')
 vim.keymap.set('n', '<A-Up>', ':m -2<CR>')
 vim.keymap.set('n', '<A-Down>', ':m +1<CR>')
+vim.keymap.set('n', '<leader>d', '"_d')
+vim.keymap.set('n', '<leader>D', '"_D')
+vim.keymap.set('v', '<leader>d', '"_d')
 
 require('plugins')
 
