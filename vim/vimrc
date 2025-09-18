@@ -1,0 +1,85 @@
+set nocompatible
+set termguicolors
+set mouse=a
+set number
+set relativenumber
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set background=dark
+set ruler
+set showmatch
+set encoding=utf-8
+set fileencoding=utf-8
+set nobackup
+set noswapfile
+set tabstop=4
+set shiftwidth=4
+set autoindent
+set smartindent
+set wrap
+set showbreak=↪
+set noexpandtab
+set colorcolumn=81
+set list
+set listchars=multispace:·,tab:→\ ,nbsp:␣,trail:•,extends:»,precedes:«
+set cursorline
+set showmode
+set showcmd
+set nospell
+set spelllang=en_gb
+set laststatus=2
+
+let mapleader=','
+let localmapleader='\\'
+
+noremap <C-x> <Esc>
+inoremap <C-x> <Esc>
+
+nnoremap <A-Up> :m -2<CR>
+nnoremap <A-Down> :m +1<CR>
+
+nnoremap <Leader>d "_d
+nnoremap <Leader>D "_D
+vnoremap <Leader>d "_d
+
+" Clear search highlighting
+nnoremap <Leader>cs :let @/=""<CR>
+
+colorscheme PaperColor
+
+call plug#begin()
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+	Plug 'sheerun/vim-polyglot'
+	Plug 'evanleck/vim-svelte', #{ branch: 'main' }
+	Plug 'dense-analysis/ale'
+	Plug 'yegappan/lsp'
+call plug#end()
+
+noremap <Leader>ff :Files<CR>
+noremap <Leader>fb :Buffers<CR>
+
+let g:ale_fixers = #{
+\	javascript: ['prettier'],
+\	typescript: ['prettier'],
+\	svelte: ['prettier']
+\}
+
+nnoremap <Leader>af <Plug>(ale_fix)
+
+let lspOpts = #{
+\	autoHighlightDiags: v:true,
+\	aleSupport: v:true
+\}
+autocmd User LspSetup call LspOptionsSet(lspOpts)
+
+let lspServers = [
+\	#{ name: 'html', filetype: ['html'], path: 'vscode-html-language-server', args: ['--stdio'] },
+\	#{ name: 'css', filetype: ['css', 'scss', 'less'], path: 'vscode-css-language-server', args: ['--stdio'] },
+\	#{ name: 'typescript', filetype: ['js', 'ts'], path: 'typescript-language-server', args: ['--stdio'] },
+\	#{ name: 'svelte', filetype: ['svelte'], path: 'svelteserver', args: ['--stdio'] }
+\]
+autocmd User LspSetup call LspAddServer(lspServers)
+

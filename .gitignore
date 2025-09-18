@@ -1,4 +1,6 @@
 /nvim/plugin/
 /zsh/.zcompdump*
 /zsh/.shell.pre-oh-my-zsh
+/vim/plugged/
+/vim/.netrwhist
 
