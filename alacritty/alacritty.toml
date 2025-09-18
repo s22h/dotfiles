@@ -7,3 +7,6 @@ import = [
 opacity = 0.9
 resize_increments = true
 
+[font]
+normal = { family = "FiraCode Nerd Font Mono", style = "Regular" }
+
