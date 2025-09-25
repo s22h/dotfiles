@@ -19,28 +19,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	spec = {
-		{
-			"dracula/vim",
-			name = "dracula",
-			lazy = false,
-			priority = 1000,
-		},
-		{
-			"ellisonleao/gruvbox.nvim",
-			lazy = false,
-			priority = 1000,
-			config = function()
-				vim.cmd.colorscheme("gruvbox")
-			end
-		},
-		{
-			"sainnhe/everforest",
-			lazy = false,
-			priority = 1000,
-			config = function()
-				vim.g.everforest_enable_italic = true
-			end
-		},
+		-- Code parsing
+		{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+		-- Fuzzy list search
 		{
 			"nvim-telescope/telescope.nvim",
 			branch = "0.1.x",
@@ -48,16 +29,24 @@ require("lazy").setup({
 				{ "nvim-lua/plenary.nvim" }
 			}
 		},
+		-- Git tools
 		{ "tpope/vim-fugitive" },
 		-- LSP Support
 		{ "neovim/nvim-lspconfig" },
 		{ "williamboman/mason.nvim" },
 		{ "williamboman/mason-lspconfig.nvim" },
-		-- Autocompletion
-		{ "hrsh7th/nvim-cmp" },
-		{ "hrsh7th/cmp-nvim-lsp" },
-		{ "hrsh7th/cmp-buffer" },
-		{ "hrsh7th/cmp-path" },
+		-- Auto completion
+		{
+			"saghen/blink.cmp",
+			version = "1.*",
+			opts = {
+				keymap = { preset = "default" },
+				appearance = {
+					nerd_font_variant = "mono"
+				}
+			}
+		},
+		-- Linting
 		{
 			"dense-analysis/ale",
 			config = function()
@@ -66,8 +55,7 @@ require("lazy").setup({
 					typescriptreact = { "eslint", "tsserver" }
 				}
 			end
-		},
-		{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" }
+		}
 	}
 })
 

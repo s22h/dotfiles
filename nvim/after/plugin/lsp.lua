@@ -1,14 +1,5 @@
 vim.opt.signcolumn = 'yes'
 
-local lspconfig = require("lspconfig")
-
-local lspconfig_defaults = require('lspconfig').util.default_config
-lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-	'force',
-	lspconfig_defaults.capabilities,
-	require('cmp_nvim_lsp').default_capabilities()
-)
-
 vim.api.nvim_create_autocmd('LspAttach', {
 	desc = 'LSP actions',
 	callback = function(event)
@@ -29,30 +20,5 @@ require('mason-lspconfig').setup({
 			lspconfig[server_name].setup({})
 		end
 	}
-})
-
-lspconfig.ts_ls.setup({
-	--root_dir = vim.lsp.util.root_pattern('package.json')
-})
-
-local cmp = require('cmp')
-
-cmp.setup({
-	sources = {
-		{ name = 'path' },
-		{ name = 'nvim_lsp' },
-		{ name = 'buffer', keyword_length = 3}
-	},
-	snippet = {
-		expand = function(args)
-			vim.snippet.expand(args.body)
-		end
-	},
-	mapping = cmp.mapping.preset.insert({
-		['<Enter>'] = cmp.mapping.confirm({ select = true }),
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<C-u>'] = cmp.mapping.scroll_docs(-4),
-		['<C-d>'] = cmp.mapping.scroll_docs(4)
-	})
 })
 

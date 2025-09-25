@@ -20,7 +20,7 @@ prettier = function ()
 	}
 end
 
-require('lspconfig').efm.setup({
+vim.lsp.config('efm', {
 	init_options = { documentFormatting = true },
 	filetypes = { "go", "markdown", "rust", "typescript", "typescriptreact" },
 	settings = {
